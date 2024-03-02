@@ -8,8 +8,8 @@ interface ClientComponentProps {
 const ClientComponent: React.FC<ClientComponentProps> = (props) => {
   return (
     <TableComponent>
-    <h2>Detalhes do Cliente e Assistente</h2>
-  </TableComponent>
+       Clientes (Não vinculados)
+    </TableComponent>
   );
 };
 

@@ -1,3 +1,4 @@
+import { Badge } from '@radix-ui/themes';
 import React from 'react';
 
 interface TableComponentProps {
@@ -12,10 +13,30 @@ const TableComponent: React.FC<TableComponentProps> = ({ children }) => {
     borderRadius: '18px',
     marginTop: '24px',
   };
+
+  const h2Style: React.CSSProperties = {
+    fontFamily: 'Arial',
+    fontWeight: 'bold',
+    fontSize: '16px',
+    color: '#121929',
+  };
   
   return (
     <div style={divStyle}>
-      {children}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px'}}>
+        <h2 style={h2Style}>{children}</h2>
+        <Badge radius="full" style={{ 
+          border: '1px solid rgba(18, 25, 41, 0.12)', 
+          color: '#00BDFF',
+          background: 'transparent'
+        }}>
+          23
+        </Badge>
+      </div>
+
+
+
+      
     </div>
   );
 };

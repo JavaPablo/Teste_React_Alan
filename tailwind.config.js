@@ -26,6 +26,8 @@ module.exports = {
         customDark: {
           500: "#121929",
         },
+        // Adicionando a cor customDark-500 com opacidade
+        "customDark-12": "rgba(18, 25, 41, 0.12)", // 0.12 é a opacidade desejada
       },
     },
   },

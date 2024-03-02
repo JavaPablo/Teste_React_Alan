@@ -23,20 +23,20 @@ interface CadastroDialogProps {
 const CadastroDialog: React.FC<CadastroDialogProps> = ({ isOpen, onClose }) => {
 
   return (
-    <Dialog>
+    <Dialog >
     <DialogTrigger asChild>
        <Button className="bg-customBlue-500 shadow-sm ml-4 mt-2 rounded-full w-[54px] h-[43px]" variant="outline" size="icon">
             <PlusCircledIcon className="w-[20px] h-[20px] text-white" />
        </Button>
     </DialogTrigger>
-    <DialogContent className="sm:max-w-[700px] h-[420px] bg-white">
+    <DialogContent className="sm:max-w-[800px] h-[479px] bg-white">
       <DialogHeader>
         <DialogTitle className="font-sans">Cadastro de Cliente</DialogTitle>
         {/* <DialogDescription>
           Make changes to your profile here. Click save when you're done.
         </DialogDescription> */}
       </DialogHeader>
-      <div className="grid gap-4 py-4 border border-customDark-500 rounded-3xl p-6">
+      <div className="grid gap-4 border border-bg-customDark-12 rounded-3xl p-6">
         <div className="grid grid-cols-4 items-center gap-2">
             <div className="col-span-4 text-left">
             <Label htmlFor="codeClient">Código do Cliente</Label>
@@ -62,16 +62,18 @@ const CadastroDialog: React.FC<CadastroDialogProps> = ({ isOpen, onClose }) => {
             </div>
         </div>
         </div>
-        <DialogFooter>
-            <DialogClose asChild>
-                <Button type="button" variant="secondary" className="bg-customDark-500 opacity-12 w-[255] h-[43]">
-                    Cancelar
-                </Button>
-            </DialogClose>
-            <Button type="submit">
-                Salvar
-            </Button>
-        </DialogFooter>
+        <div className="mt-8">
+          <DialogFooter>
+              <DialogClose asChild>
+                  <Button type="button" variant="secondary" className="bg-customDark-12 w-[255px] h-[43px] transition duration-300 ease-in-out transform hover:shadow-xl rounded-3xl">
+                      Cancelar
+                  </Button>
+              </DialogClose>
+              <Button type="submit" className="bg-customBlue-500 text-white w-[255px] h-[43px] transition duration-300 ease-in-out transform hover:shadow-xl rounded-3xl">
+                  Salvar
+              </Button>
+          </DialogFooter>
+      </div>
     </DialogContent>
   </Dialog>
   );

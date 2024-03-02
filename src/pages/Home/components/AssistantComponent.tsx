@@ -20,7 +20,7 @@ const AssistantComponent: React.FC = () => {
 
   return (
     <div>
-      <p style={{ marginTop: '40px', fontFamily: 'Arial', fontWeight: 'normal', fontSize: '14px', color: '#121929' }}>
+      <p style={{ marginTop: '32px', fontFamily: 'Arial', fontWeight: 'normal', fontSize: '14px', color: '#121929' }}>
         Selecione o Assistente Comercial
       </p>
       <div>

@@ -13,6 +13,8 @@ import {
   import { Label } from "./ui/label"
   import { Button } from './ui/button';
 import { PlusCircledIcon } from '@radix-ui/react-icons';
+// import * as Dialog from '@radix-ui/react-dialog';
+// import { Button, Flex, Text, TextField } from '@radix-ui/themes';
 
 
 interface CadastroDialogProps {
@@ -23,6 +25,53 @@ interface CadastroDialogProps {
 const CadastroDialog: React.FC<CadastroDialogProps> = ({ isOpen, onClose }) => {
 
   return (
+    // <Dialog.Root>
+    //   <Dialog.Trigger>
+    //     <Button className="bg-customBlue-500 shadow-sm ml-4 mt-2 rounded-full w-[54px] h-[43px]" variant="outline">
+    //       <PlusCircledIcon className="w-[20px] h-[20px] text-white" />
+    //     </Button>
+    //   </Dialog.Trigger>
+
+    //   <Dialog.Content style={{ maxWidth: 450 }}>
+    //     <Dialog.Title>Edit profile</Dialog.Title>
+    //     <Dialog.Description >
+    //       Make changes to your profile.
+    //     </Dialog.Description>
+
+    //     <Flex direction="column" gap="3">
+    //       <label>
+    //         <Text as="div" size="2" mb="1" weight="bold">
+    //           Name
+    //         </Text>
+    //         <TextField.Input
+    //           defaultValue="Freja Johnsen"
+    //           placeholder="Enter your full name"
+    //         />
+    //       </label>
+    //       <label>
+    //         <Text as="div" size="2" mb="1" weight="bold">
+    //           Email
+    //         </Text>
+    //         <TextField.Input
+    //           defaultValue="freja@example.com"
+    //           placeholder="Enter your email"
+    //         />
+    //       </label>
+    //     </Flex>
+
+    //     <Flex gap="3" mt="4" justify="end">
+    //       <Dialog.Close>
+    //         <Button  color="gray">
+    //           Cancel
+    //         </Button>
+    //       </Dialog.Close>
+    //       <Dialog.Close>
+    //         <Button>Save</Button>
+    //       </Dialog.Close>
+    //     </Flex>
+    //   </Dialog.Content>
+    // </Dialog.Root>
+
     <Dialog >
     <DialogTrigger asChild>
        <Button className="bg-customBlue-500 shadow-sm ml-4 mt-2 rounded-full w-[54px] h-[43px]" variant="outline" size="icon">
@@ -31,7 +80,7 @@ const CadastroDialog: React.FC<CadastroDialogProps> = ({ isOpen, onClose }) => {
     </DialogTrigger>
     <DialogContent className="sm:max-w-[800px] h-[479px] bg-white">
       <DialogHeader>
-        <DialogTitle className="font-sans">Cadastro de Cliente</DialogTitle>
+        <DialogTitle className="font-sans">Cadastro de Assistente Comercial</DialogTitle>
         {/* <DialogDescription>
           Make changes to your profile here. Click save when you're done.
         </DialogDescription> */}
@@ -39,26 +88,26 @@ const CadastroDialog: React.FC<CadastroDialogProps> = ({ isOpen, onClose }) => {
       <div className="grid gap-4 border border-bg-customDark-12 rounded-3xl p-6">
         <div className="grid grid-cols-4 items-center gap-2">
             <div className="col-span-4 text-left">
-            <Label htmlFor="codeClient">Código do Cliente</Label>
+            <Label htmlFor="codeClient">Nome Completo</Label>
             </div>
             <div className="col-span-4">
-            <Input id="codeClient" placeholder="Digite a quantidade" className="rounded-xl p-4" />
+            <Input id="codeClient" placeholder="Digite seu nome" className="rounded-xl p-4" />
             </div>
         </div>
         <div className="grid grid-cols-4 items-center gap-2">
             <div className="col-span-4 text-left">
-            <Label htmlFor="nameClient">Nome do Cliente</Label>
+            <Label htmlFor="nameClient">Email</Label>
             </div>
             <div className="col-span-4">
-            <Input id="nameClient" placeholder="Digite a quantidade" className="rounded-xl p-4" />
+            <Input id="nameClient" placeholder="Digite seu e-mail" className="rounded-xl p-4" />
             </div>
         </div>
         <div className="grid grid-cols-4 items-center gap-2">
             <div className="col-span-4 text-left">
-            <Label htmlFor="network">Rede</Label>
+            <Label htmlFor="network">Telefone</Label>
             </div>
             <div className="col-span-4">
-            <Input id="network" placeholder="Digite a quantidade" className="rounded-xl p-4" />
+            <Input id="network" placeholder="Digite seu telefone" className="rounded-xl p-4" />
             </div>
         </div>
         </div>

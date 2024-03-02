@@ -8,7 +8,7 @@ body, .color-body {
 }
 
 .opaque-border {
-  border-color: rgba(18, 25, 41, 0.75); /* Use a cor desejada e defina a opacidade aqui */
+  border-color: rgba(18, 25, 41, 0.75); 
 }
 
 

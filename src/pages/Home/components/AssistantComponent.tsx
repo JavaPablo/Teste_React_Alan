@@ -11,10 +11,12 @@ const AssistantComponent: React.FC = () => {
   const [cadastroDialogAberto, setCadastroDialogAberto] = useState(false);
 
   const abrirCadastroDialog = () => {
+    console.log('botao true 2');
     setCadastroDialogAberto(true);
   };
 
   const fecharCadastroDialog = () => {
+    console.log('botao false');
     setCadastroDialogAberto(false);
   };
 
@@ -37,11 +39,34 @@ const AssistantComponent: React.FC = () => {
         <SelectItem value="Fulano">Fulano</SelectItem>
         <SelectItem value="Ciclano">Ciclano</SelectItem>
         <SelectItem value="Beltrano">Beltrano</SelectItem>
+        <SelectItem value="Harry Potter">Beltrano</SelectItem>
+        <SelectItem value="Rony Wesley">Beltrano</SelectItem>
+        <SelectItem value="Luna Lovigod">Beltrano</SelectItem>
       </SelectGroup>
     </SelectContent>
   </Select>
 
-<CadastroDialog isOpen={cadastroDialogAberto} onClose={fecharCadastroDialog} />
+  {/* <Button className="bg-customBlue-500 shadow-sm ml-4 mt-2 rounded-full w-[54px] h-[43px] transition duration-300 ease-in-out transform hover:shadow-xl" variant="outline" size="icon">
+            <PlusCircledIcon className="w-[20px] h-[20px] text-white" />
+  </Button> */}
+
+{/* <CadastroDialog isOpen={cadastroDialogAberto} onClose={fecharCadastroDialog} /> */}
+
+
+
+    <Button className="bg-customBlue-500 shadow-sm ml-4 mt-2 rounded-full w-[54px] h-[43px] transition duration-300 ease-in-out transform hover:shadow-xl"
+      variant="outline" size="icon" onClick={abrirCadastroDialog}>
+        <PlusCircledIcon className="w-[20px] h-[20px] text-white" />
+    </Button>
+
+    <CadastroDialog titleDialog='Cadastro de Assistente Comercial' param1='Nome Completo' param2='Email' param3='Telefone' isOpen={cadastroDialogAberto} onClose={fecharCadastroDialog} />
+      
+
+
+
+
+
+
 
   {/* <Button onClick={abrirCadastroDialog} className="bg-customBlue-500 shadow-sm ml-4 mt-2 rounded-full w-[54px] h-[43px]" variant="outline" size="icon">
     <PlusCircledIcon className="w-[20px] h-[20px] text-white" />

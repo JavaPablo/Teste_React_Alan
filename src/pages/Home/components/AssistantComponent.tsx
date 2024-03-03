@@ -29,7 +29,7 @@ const AssistantComponent: React.FC = () => {
 <div className="flex items-center">
     <Select>
     <SelectTrigger className="w-[388px] bg-white mt-2 rounded-xl shadow-sm">
-      <SelectValue placeholder="Selecione" />
+      <SelectValue placeholder="Selecione"/>
     </SelectTrigger>
     <SelectContent>
       <SelectGroup  className="bg-white rounded-xl">

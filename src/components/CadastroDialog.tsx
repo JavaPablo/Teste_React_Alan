@@ -74,7 +74,7 @@ const CadastroDialog: React.FC<CadastroDialogProps> = ({ isOpen, onClose }) => {
 
     <Dialog >
     <DialogTrigger asChild>
-       <Button className="bg-customBlue-500 shadow-sm ml-4 mt-2 rounded-full w-[54px] h-[43px]" variant="outline" size="icon">
+       <Button className="bg-customBlue-500 shadow-sm ml-4 mt-2 rounded-full w-[54px] h-[43px] transition duration-300 ease-in-out transform hover:shadow-xl" variant="outline" size="icon">
             <PlusCircledIcon className="w-[20px] h-[20px] text-white" />
        </Button>
     </DialogTrigger>

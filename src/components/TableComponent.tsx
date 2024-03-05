@@ -1,11 +1,13 @@
+import React, { useState } from 'react';
 import { Badge, Table, TextField } from '@radix-ui/themes';
-import React from 'react';
 import { Button } from './ui/button';
 import { MagnifyingGlassIcon, PlusCircledIcon } from '@radix-ui/react-icons';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Link } from 'lucide-react';
 import CadastroDialog from './CadastroDialog';
-import { Form } from './ui/form';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from './ui/form';
 import { Checkbox } from './ui/checkbox';
+import { Controller } from 'react-hook-form';
+import styled from 'styled-components';
 // import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from './ui/table';
 
 interface TableComponentProps {
@@ -30,7 +32,16 @@ interface Client {
   checked: boolean;
 }
 
+interface Item {
+  param1: string;
+  param2: string;
+  param3: string;
+}
+
+
+
 const TableComponent: React.FC<TableComponentProps> = ({ tableHeaderText, button1, button2 }) => {
+  
   const divStyle: React.CSSProperties = {
     backgroundColor: 'white',
     height: '490px',
@@ -93,7 +104,61 @@ const TableComponent: React.FC<TableComponentProps> = ({ tableHeaderText, button
     // },
   ]
 
-  
+ 
+  const CheckboxWrapper = styled.div<{ isChecked: boolean }>`
+    display: flex;
+    align-items: center;
+    position: relative;
+    border-radius: 18px;
+    background-color: #ebedef;
+    margin-bottom: 10px;
+    width: 590px;
+    height: 45px;
+
+    input {
+      margin-right: 10px;
+    }
+
+    input:checked::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid #00bdff;
+      border-radius: 18px;
+      pointer-events: none;
+    }
+`;
+
+  const simulatedData: Item[] = [
+    { param1: 'XX30-2', param2: 'Cliente XYZ', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
+  ];
+
+  const [headerCheckboxState, setHeaderCheckboxState] = useState(false);
+  const [checkboxStates, setCheckboxStates] = useState<boolean[]>(simulatedData.map(() => false));
+
+  const handleHeaderCheckboxChange = () => {
+    setHeaderCheckboxState(prevState => !prevState);
+    setCheckboxStates(prevStates => prevStates.map(() => !headerCheckboxState));
+  };
+
+  const handleCheckboxChange = (index: number) => {
+    setCheckboxStates(prevStates => {
+      const newStates = [...prevStates];
+      newStates[index] = !newStates[index];
+      setHeaderCheckboxState(newStates.every(Boolean));
+      return newStates;
+    });
+  };
+
   
   return (
     <div style={divStyle}>
@@ -151,12 +216,169 @@ const TableComponent: React.FC<TableComponentProps> = ({ tableHeaderText, button
 
 
 
+     
+
+
+      <div className="mt-0">
+
+      {/* <Table.Root >
+      <Table.Header>
+        <div style={{}}>
+          <input
+            type="checkbox"
+            checked={headerCheckboxState}
+            onChange={handleHeaderCheckboxChange}
+          />
+          <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+        </div>
+      </Table.Header>
+
+      <Table.Body>
+        {simulatedData.map((item, index) => (
+          // <Table.Row 
+          //   key={index} 
+          //   style={{ 
+          //     borderRadius: '20px', 
+          //     backgroundColor: '#EAEDEE',
+          //     marginBottom: '10px' }}>
+          <div
+            key={index}
+            className={`table-row-item ${checkboxStates[index] ? 'checked' : ''}`}
+            style={{ 
+                  borderRadius: '18px', 
+                  backgroundColor: '#EAEDEE',
+                  marginBottom: '10px',
+                  width: '590px',
+                  height: '45px',
+                  position: 'relative', }}
+            >
+            <input
+              type="checkbox"
+              checked={checkboxStates[index]}
+              onChange={() => handleCheckboxChange(index)}
+            />
+            <Table.RowHeaderCell>{item.name}</Table.RowHeaderCell>
+            <Table.Cell>{item.email}</Table.Cell>
+            <Table.Cell>{item.group}</Table.Cell>
+
+            <style >{`
+              .table-row-item.checked input:focus::after {
+                content: '';
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                bottom: 0px;
+                border: 1px solid #00BDFF;
+                border-radius: 18px;
+                pointer-events: none;
+              }
+            `}</style>
+            </div>
+        ))}
+      </Table.Body>
+    </Table.Root> */}
+
+
+  {/* <Table.Root>
+      <Table.Header>
+        <div>
+          <input
+            type="checkbox"
+            checked={headerCheckboxState}
+            onChange={handleHeaderCheckboxChange}
+          />
+          <Table.ColumnHeaderCell>Código</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Parceiro</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Rede</Table.ColumnHeaderCell>
+        </div>
+      </Table.Header>
+
+      <Table.Body>
+        {simulatedData.map((item, index) => (
+          <CheckboxWrapper
+            key={index}
+            className={`${checkboxStates[index] ? 'checked' : ''}`}
+          >
+            <input
+              type="checkbox"
+              checked={checkboxStates[index]}
+              onChange={() => handleCheckboxChange(index)}
+            />
+            <Table.RowHeaderCell>{item.param1}</Table.RowHeaderCell>
+            <Table.Cell>{item.param2}</Table.Cell>
+            <Table.Cell>{item.param3}</Table.Cell>
+          </CheckboxWrapper>
+        ))}
+      </Table.Body>
+    </Table.Root> */}
+
+    <Table.Root >
+      <Table.Header>
+        <div style={{}}>
+          <input
+            type="checkbox"
+            checked={headerCheckboxState}
+            onChange={handleHeaderCheckboxChange}
+          />
+          <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
+          <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
+        </div>
+      </Table.Header>
+
+      <Table.Body>
+        {simulatedData.map((item, index) => (
+          <CheckboxWrapper
+            key={index}
+            isChecked={checkboxStates[index]}
+            className={`table-row-item ${checkboxStates[index] ? 'checked' : ''}`}
+          >
+            <input
+              type="checkbox"
+              checked={checkboxStates[index]}
+              onChange={() => handleCheckboxChange(index)}
+            />
+            <Table.RowHeaderCell>{item.param1}</Table.RowHeaderCell>
+            <Table.Cell>{item.param2}</Table.Cell>
+            <Table.Cell>{item.param3}</Table.Cell>
+          </CheckboxWrapper>
+        ))}
+      </Table.Body>
+    </Table.Root>
 
 
 
 
 
-      <div className="mt-4">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       {/* <Form onSubmit={handleSubmit}>
           {clients.map((client, index) => (
             <div key={index} className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">

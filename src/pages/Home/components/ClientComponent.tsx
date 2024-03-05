@@ -20,7 +20,7 @@ const ClientComponent: React.FC<ClientComponentProps> = () => {
 
   return (
       <>
-        <div key="component1">
+        {/* <div key="component1">
           <TableComponent
             tableHeaderText="Clientes (Não vinculados)"
             button1={{
@@ -32,7 +32,7 @@ const ClientComponent: React.FC<ClientComponentProps> = () => {
         </div>
 
         <CadastroDialog titleDialog='Cadastro de Cliente' param1='Código do Cliente' param2='Nome Completo' param3='Rede' isOpen={cadastroDialogAberto} onClose={fecharCadastroDialog} />
-       
+        */}
        {/* <Button className="bg-customBlue-500 shadow-sm ml-4 mt-2 rounded-full w-[54px] h-[43px] transition duration-300 ease-in-out transform hover:shadow-xl"
       variant="outline" size="icon" onClick={abrirCadastroDialog}>
         <PlusCircledIcon className="w-[20px] h-[20px] text-white" />

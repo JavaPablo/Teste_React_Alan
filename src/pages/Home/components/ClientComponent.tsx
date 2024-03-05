@@ -20,13 +20,16 @@ const ClientComponent: React.FC<ClientComponentProps> = () => {
 
   return (
       <>
-        <TableComponent tableHeaderText="Clientes (Não vinculados)" 
-        button1={{
-          text: "Adicionar cliente",
-          onClick: abrirCadastroDialog,
-        }}
-        button2={{ text: "Vincular", onClick: () => console.log("Botão 2 clicado") }}
-        />
+        <div key="component1">
+          <TableComponent
+            tableHeaderText="Clientes (Não vinculados)"
+            button1={{
+              text: "Adicionar cliente",
+              onClick: abrirCadastroDialog,
+            }}
+            button2={{ text: "Vincular", onClick: () => console.log("Botão 2 clicado") }}
+          />
+        </div>
 
         <CadastroDialog titleDialog='Cadastro de Cliente' param1='Código do Cliente' param2='Nome Completo' param3='Rede' isOpen={cadastroDialogAberto} onClose={fecharCadastroDialog} />
        

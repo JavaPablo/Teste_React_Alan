@@ -6,6 +6,7 @@ import { Button } from '../../../components/ui/button';
 import { ChevronRightIcon, PlusCircledIcon } from '@radix-ui/react-icons';
 import { PlusIcon } from 'lucide-react';
 import CadastroDialog from '../../../components/CadastroDialog';
+import TableComponent from '../../../components/TableComponent';
 
 const AssistantComponent: React.FC = () => {
   const [cadastroDialogAberto, setCadastroDialogAberto] = useState(false);
@@ -21,6 +22,7 @@ const AssistantComponent: React.FC = () => {
   };
 
   return (
+    <>
     <div>
       <p style={{ marginTop: '32px', fontFamily: 'Arial', fontWeight: 'normal', fontSize: '14px', color: '#121929' }}>
         Selecione o Assistente Comercial
@@ -90,6 +92,18 @@ const AssistantComponent: React.FC = () => {
 </div>
 
     </div>
+
+    {/* <div key="component1">
+      <TableComponent
+        tableHeaderText="Carteira do {SelectItem}"
+        button1={{
+          text: "",
+          onClick: abrirCadastroDialog,
+        }}
+        button2={{ text: "Desvincular", onClick: () => console.log("Botão 2 clicado") }}
+      />
+    </div> */}
+    </>
   );
 };
 

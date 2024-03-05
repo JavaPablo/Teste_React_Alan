@@ -10,6 +10,11 @@ import { Controller } from 'react-hook-form';
 import styled from 'styled-components';
 // import { Table, TableBody, TableCaption, TableCell, TableFooter, TableHead, TableHeader, TableRow } from './ui/table';
 
+const Container = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
 interface TableComponentProps {
   tableHeaderText: string;
   button1: {
@@ -108,15 +113,25 @@ const TableComponent: React.FC<TableComponentProps> = ({ tableHeaderText, button
   const CheckboxWrapper = styled.div<{ isChecked: boolean }>`
     display: flex;
     align-items: center;
+    justify-content: center;
     position: relative;
     border-radius: 18px;
     background-color: #ebedef;
     margin-bottom: 10px;
+    padding-right: 8px;
     width: 590px;
     height: 45px;
+    padding-left: 20px;
+    font-weight: 500;
+    overflow: auto;
+
+    span {
+      margin-right: 18px;
+      margin-left: 10px;
+    }
 
     input {
-      margin-right: 10px;
+      margin-right: 8px;
     }
 
     input:checked::after {
@@ -130,10 +145,44 @@ const TableComponent: React.FC<TableComponentProps> = ({ tableHeaderText, button
       border-radius: 18px;
       pointer-events: none;
     }
+
+  span:last-child {
+    margin-left: auto;
+  }
+`;
+
+const HeaderWrapper = styled.div`
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 28px;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  color: rgba(18, 25, 41, 0.6);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+
+  span {
+    margin-right: 20px;
+    margin-left: 10px;
+  }
+
+  input {
+    margin-right: 8px;
+  }
+
+  span:last-child {
+    margin-left: auto;
+  }
 `;
 
   const simulatedData: Item[] = [
     { param1: 'XX30-2', param2: 'Cliente XYZ', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
+    { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
     { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
     { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
     { param1: 'XX30-2', param2: 'XX30-2', param3: 'Rede 2' },
@@ -161,6 +210,7 @@ const TableComponent: React.FC<TableComponentProps> = ({ tableHeaderText, button
 
   
   return (
+    <Container>
     <div style={divStyle}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '15px'}}>
         <h2 style={h2Style}>{tableHeaderText}</h2>
@@ -316,20 +366,21 @@ const TableComponent: React.FC<TableComponentProps> = ({ tableHeaderText, button
     </Table.Root> */}
 
     <Table.Root >
-      <Table.Header>
-        <div style={{}}>
+    <Table.Header>
+        <HeaderWrapper>
           <input
             type="checkbox"
             checked={headerCheckboxState}
             onChange={handleHeaderCheckboxChange}
           />
-          <Table.ColumnHeaderCell>Name</Table.ColumnHeaderCell>
-          <Table.ColumnHeaderCell>Email</Table.ColumnHeaderCell>
-          <Table.ColumnHeaderCell>Group</Table.ColumnHeaderCell>
-        </div>
+          <span>Código</span>
+          <span>Parceiro</span>
+          <span>Rede</span>
+        </HeaderWrapper>
       </Table.Header>
 
-      <Table.Body>
+      {/* <Table.Body> */}
+      <div style={{ overflow: 'auto' }}>
         {simulatedData.map((item, index) => (
           <CheckboxWrapper
             key={index}
@@ -341,12 +392,13 @@ const TableComponent: React.FC<TableComponentProps> = ({ tableHeaderText, button
               checked={checkboxStates[index]}
               onChange={() => handleCheckboxChange(index)}
             />
-            <Table.RowHeaderCell>{item.param1}</Table.RowHeaderCell>
-            <Table.Cell>{item.param2}</Table.Cell>
-            <Table.Cell>{item.param3}</Table.Cell>
+            <span>{item.param1}</span>
+            <span>{item.param2}</span>
+            <span>{item.param3}</span>
           </CheckboxWrapper>
         ))}
-      </Table.Body>
+        </div>
+      {/* </Table.Body> */}
     </Table.Root>
 
 
@@ -447,6 +499,7 @@ const TableComponent: React.FC<TableComponentProps> = ({ tableHeaderText, button
       </div>
       {/* <CadastroDialog isOpen={false} onClose={() => {}} /> */}
     </div>
+    </Container>
   );
 };
 
